@@ -1,8 +1,10 @@
 .form {
   max-width: 1200px;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  color:#F65858
 }
 
 .col1,
@@ -12,8 +14,14 @@
   width: 48%;
 }
 
+.customDatePickerWidth, 
+.customDatePickerWidth > div.react-datepicker-wrapper, 
+.customDatePickerWidth > div > div.react-datepicker__input-container
+.customDatePickerWidth > div > div.react-datepicker__input-container input {
+   width: 100%;
+}
 .col2{
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 @media (max-width:860px){
@@ -21,6 +29,7 @@
         flex-direction: column;
     }
     .col1, .col2 {
-        width: 100%;
+        width: 90%;
+        margin: auto;
     }
 }

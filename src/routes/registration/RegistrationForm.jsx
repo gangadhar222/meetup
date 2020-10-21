@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
+import {connect} from 'react-redux';
 import "react-datepicker/dist/react-datepicker.css";
 import "./registration.css";
+import {postRequest} from '../../redux/action'
 
 export class RegistrationForm extends Component {
   constructor(props) {
@@ -10,9 +12,9 @@ export class RegistrationForm extends Component {
     this.state = {
       name: "",
       age: "",
-      profession: "",
+      profession: "student",
       location: "",
-      guests: "",
+      guests: 0,
       date: null,
       address: "",
     };
@@ -36,13 +38,13 @@ export class RegistrationForm extends Component {
   };
 
   handleSubmit = () => {
-    console.log(this.state);
+    this.props.postRequest(this.state)
   };
 
   render() {
     return (
       <div>
-        <form onSubmit={() => this.handleSubmit()} className="form">
+        <div className="form">
           <div className="col1">
             <div className="form-group">
               <label>Name</label>
@@ -56,7 +58,7 @@ export class RegistrationForm extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Name</label>
+              <label>Age</label>
               <input
                 type="Number"
                 name="age"
@@ -66,7 +68,7 @@ export class RegistrationForm extends Component {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group customDatePickerWidth">
               <label>Date Of Birth</label>
               <br></br>
               <DatePicker
@@ -74,7 +76,7 @@ export class RegistrationForm extends Component {
                 dateFormat="dd/MM/yyyy"
                 onChange={(date) => this.setDate(date)}
                 maxDate={new Date()}
-                className="form-control"
+                className="form-control date"
                 placeholderText="date"
                 isClearable
                 showYearDropdown
@@ -121,7 +123,7 @@ export class RegistrationForm extends Component {
               </select>
             </div>
             <div className="form-group">
-              <label>Example textarea</label>
+              <label>Address</label>
               <textarea
                 className="form-control textArea"
                 rows="3"
@@ -130,14 +132,18 @@ export class RegistrationForm extends Component {
                 required
               ></textarea>
             </div>
-            <button type="submit" className="btn">
+            <button type="submit" className="btn" onClick={this.handleSubmit}>
               Register
             </button>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
 }
 
-export default RegistrationForm;
+const mapDispatchToProps = dispatch => ({
+  postRequest: (payload) => dispatch(postRequest(payload))
+})
+
+export default connect(null, mapDispatchToProps)(RegistrationForm)

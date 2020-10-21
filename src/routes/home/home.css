@@ -1,4 +1,4 @@
-.form{
+.home{
     display: flex;
     width: 90%;
     max-width: 1200px;
@@ -13,7 +13,6 @@
     width: 100%;
 }
 
-
 .btn{
     background-color:#F65858;
     color:white;
@@ -22,7 +21,7 @@
     margin-top: 1em;
 }
 
-@media (max-width:860px){
+@media (max-width:840px){
     .home{
         flex-direction: column;
     }
