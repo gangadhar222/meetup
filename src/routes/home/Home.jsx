@@ -10,7 +10,7 @@ export default function HomePage() {
                     <button className="btn">Book your slot</button>
                 </div>
                 <div className="row2">
-                    <img src={homeImage} />
+                    <img src={homeImage} alt="img" />
                 </div>
         </div>
     )
