@@ -34,6 +34,17 @@ export class RegistrationForm extends Component {
   setDate = (date) => {
     this.setState({
       date: date,
+    },()=>{
+      let today = new Date();
+      let birthDate = new Date(date);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      let m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+      }
+      this.setState({
+        age:age
+      })
     });
   };
 
@@ -42,9 +53,11 @@ export class RegistrationForm extends Component {
   };
 
   render() {
+    var date = new Date(); 
+    date.setFullYear(date.getFullYear() - 13);
     return (
       <div>
-        <div className="form">
+        <form onSubmit={this.handleSubmit} className="form">
           <div className="col1">
             <div className="form-group">
               <label>Name</label>
@@ -64,6 +77,7 @@ export class RegistrationForm extends Component {
                 name="age"
                 className="form-control"
                 placeholder="Age"
+                value={this.state.age}
                 onChange={this.handleChange}
                 required
               />
@@ -73,9 +87,8 @@ export class RegistrationForm extends Component {
               <br></br>
               <DatePicker
                 selected={this.state.date}
-                dateFormat="dd/MM/yyyy"
                 onChange={(date) => this.setDate(date)}
-                maxDate={new Date()}
+                maxDate={date}
                 className="form-control date"
                 placeholderText="date"
                 isClearable
@@ -132,11 +145,11 @@ export class RegistrationForm extends Component {
                 required
               ></textarea>
             </div>
-            <button type="submit" className="btn" onClick={this.handleSubmit}>
+            <button type="submit" className="btn">
               Register
             </button>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

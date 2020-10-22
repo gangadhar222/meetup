@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom'
 import { getRequest } from "../../redux/action";
 import { connect } from "react-redux";
 import "./search.css";
@@ -8,23 +9,29 @@ export class SearchUser extends Component {
     super(props);
 
     this.state = {
-      input: "",
+      name: ""
     };
   }
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
+
+  handleSearch = ()=>{
+    let {input} = this.state
+    console.log(input)
+    this.props.getRequest(input);
+  }
 
   componentDidMount() {
     this.props.getRequest();
   }
 
   render() {
-    console.log(this.props.data, "props");
-    const { data } = this.props;
+    const { data,match,id } = this.props;
+    console.log(match,id)
     return (
       <div>
         <div className="container">
@@ -32,6 +39,7 @@ export class SearchUser extends Component {
             placeholder="search for an user"
             className="input"
             name="input"
+            onChange={this.handleChange}
           />
           <button className="btn margin" onClick={this.handleSearch}>
             Search
@@ -41,11 +49,11 @@ export class SearchUser extends Component {
           {data &&
             data.map((item) => {
               return (
-                <div class="card col-4 mb-5">
-                  <h1>{item.data.name}</h1>
+                <div key={item.id} className="card col-md-6 col-lg-4 mb-5">
+                  <h2>{item.data.name}</h2>
                   <p>{item.data.location}</p>
                   <p>
-                    <button className="button">More info</button>
+                    <button className="button" onClick={this.handleSearch}><Link to={`${match.url}/${item.id}`} className="btnLink">More Info</Link></button>
                   </p>
                 </div>
               );

@@ -8,9 +8,16 @@ export const getData = (payload) => ({
 })
 
 export const getRequest = (payload) => dispatch=>{
-    axios.get(`http://localhost:3005/users`)
-        .then(res => dispatch(getData(res)))
+    if(payload){
+        axios.get(`http://localhost:3005/users?data.name=${payload}`)
+        .then(res =>dispatch(getData(res)))
         .catch(err => dispatch(err));
+    }
+    else{
+        axios.get(`http://localhost:3005/users`)
+        .then(res =>dispatch(getData(res)))
+        .catch(err => dispatch(err));
+    }
 }
 
 export const postData = (payload) => ({
