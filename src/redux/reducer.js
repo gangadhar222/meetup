@@ -8,15 +8,13 @@ import {GETDATA,POSTDATA} from './actionTypes'
    const reducer = (state = initState, { type, payload }) => {
        switch (type) {
            case GETDATA: {
+               console.log('getRequest',payload.data[0])
                return {
                    ...state,
-                   data:payload,
+                   data:payload.data,
                }
            }
            case POSTDATA: {
-               if(payload){
-                   console.log(payload,"reducer")
-               }
             return {
                 ...state,
             }

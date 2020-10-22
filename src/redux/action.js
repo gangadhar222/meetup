@@ -7,11 +7,10 @@ export const getData = (payload) => ({
     payload
 })
 
-export const getRequest = (payload) => {
+export const getRequest = (payload) => dispatch=>{
     axios.get(`http://localhost:3005/users`)
-        .then(res => console.log(res))
-        // .then(res => dispatch(getData(res)))
-        // .catch(err => dispatch(err));
+        .then(res => dispatch(getData(res)))
+        .catch(err => dispatch(err));
 }
 
 export const postData = (payload) => ({
