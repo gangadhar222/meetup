@@ -1,9 +1,14 @@
-import {GETDATA,POSTDATA} from './actionTypes'
+import {GETDATA,POSTDATA,REPORTSDATA} from './actionTypes'
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 export const getData = (payload) => ({
     type: GETDATA,
+    payload
+})
+
+export const reportData = (payload)=>({
+    type:REPORTSDATA,
     payload
 })
 
@@ -15,7 +20,10 @@ export const getRequest = (payload) => dispatch=>{
     }
     else{
         axios.get(`http://localhost:3005/users`)
-        .then(res =>dispatch(getData(res)))
+        .then(res =>{
+            dispatch(getData(res))
+            dispatch(reportData(res))
+        })
         .catch(err => dispatch(err));
     }
 }

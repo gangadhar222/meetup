@@ -123,7 +123,7 @@ export class RegistrationForm extends Component {
           </div>
           <div className="col2">
             <div className="form-group">
-              <label>Example select</label>
+              <label>Number of Guests</label>
               <select
                 className="form-control select"
                 name="guests"
