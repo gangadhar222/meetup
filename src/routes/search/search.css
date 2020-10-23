@@ -28,23 +28,6 @@
     font-family: arial;
   }
 
-  .button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color:gray;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  } 
-  
-  .button:hover{
-    opacity: 0.8;
-  }
-
   .btnLink{
     color: white;
   }
