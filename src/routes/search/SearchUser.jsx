@@ -48,7 +48,7 @@ export class SearchUser extends Component {
           {data &&
             data.map((item) => {
               return (
-                <div key={item.id} className="card col-md-6 col-lg-4 mb-5">
+                <div key={item.id} className="card col-md-6 col-lg-3 mb-5">
                   <h2>{item.data.name}</h2>
                   <p>{item.data.location}</p>
                   <p>
