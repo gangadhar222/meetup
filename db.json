@@ -19,7 +19,7 @@
         "age": 25,
         "profession": "Employed",
         "location": "Kerala",
-        "guests": "1",
+        "guests": "2",
         "date": "1995-10-21T18:30:00.000Z",
         "address": "Varanasi",
         "id": "943b7ebe-b6ad-4c62-96fc-fa30d856fe92"
@@ -45,7 +45,7 @@
         "age": 24,
         "profession": "student",
         "location": "Kerala",
-        "guests": 0,
+        "guests": 2,
         "date": "1996-10-07T18:30:00.000Z",
         "address": "Kerala",
         "id": "c17125bc-0146-4a96-8fa3-431466bd1dbc"
@@ -58,7 +58,7 @@
         "age": 13,
         "profession": "student",
         "location": "AndhraPradesh",
-        "guests": 0,
+        "guests": 1,
         "date": "2007-10-02T18:30:00.000Z",
         "address": "Pulivendula",
         "id": "06acf340-08af-4620-96c7-2e573f248b21"

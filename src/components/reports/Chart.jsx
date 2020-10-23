@@ -10,8 +10,8 @@ class Chart extends Component {
   render() {
     
     return (
-      <div>
-        <Bar data={this.props.chartData} height={100} options={this.props.configuration} />
+      <div className="container">
+        <Bar data={this.props.chartData} height={75} options={this.props.configuration} />
       </div>
     );
   }
