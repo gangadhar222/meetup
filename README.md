@@ -10,17 +10,17 @@
 Covers below use cases :-
 1. User can register with his details along with the upto 2 guests
 
-    ![N|Solid](https://imgur.com/O06vMVT)
+    ![N|Solid](https://imgur.com/O06vMVT.png)
 
 
 2. After registration user will be added to the list 
 
-    ![N|Solid](https://imgur.com/FkloJkm)
+    ![N|Solid](https://imgur.com/FkloJkm.png)
 
 
 3. Reports regarding users can be seen in charts 
     
-    ![N|Solid](https://imgur.com/cj4QQYR)
+    ![N|Solid](https://imgur.com/cj4QQYR.png)
 
 I've used React for Frontend and Redux for State Management. At the backend, I've used JSON-SERVER.
 
