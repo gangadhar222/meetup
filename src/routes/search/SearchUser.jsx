@@ -30,8 +30,7 @@ export class SearchUser extends Component {
   }
 
   render() {
-    const { data,match,id } = this.props;
-    console.log(match,id)
+    const { data,match} = this.props;
     return (
       <div>
         <div className="container">

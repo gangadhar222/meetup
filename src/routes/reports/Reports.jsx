@@ -15,6 +15,11 @@ class Reports extends Component {
   }
 
   render() {
+    console.log(
+      this.props.studentsCount,
+      this.props.professionalsCount,
+      this.props.averageTeamSize
+    );
     let data = {};
     if (this.props.data) {
       data = {
@@ -38,22 +43,22 @@ class Reports extends Component {
       };
     }
     const options = {
-        title: {
-          display: true,
-          text: "Bar Chart",
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                min: 0,
-                max: 20,
-                stepSize: 5,
-              },
+      title: {
+        display: true,
+        text: "Bar Chart",
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              min: 0,
+              max: 20,
+              stepSize: 5,
             },
-          ],
-        },
-      };
+          },
+        ],
+      },
+    };
     return (
       <div>
         <Chart chartData={data} configuration={options} />
@@ -64,6 +69,11 @@ class Reports extends Component {
 
 const mapStateToProps = (state) => ({
   data: state.reducer.ages,
+  studentsCount: state.reducer.studentsCount,
+  professionalsCount: state.reducer.professionalsCount,
+  averageTeamSize: state.reducer.averageTeamSize,
+//   locations: state.reducer.locations,
+//   personsBylocation: state.reducer.personsBylocation
 });
 const mapDispatchToProps = (dispatch) => ({
   getRequest: (payload) => dispatch(getRequest(payload)),

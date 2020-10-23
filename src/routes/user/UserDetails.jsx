@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 
 function UserDetails(props) {
     const {match,data} = props
-    const user = data.find(user =>user.id===match.params.id) 
-    console.log(user)
+    const user = data.find(user =>Number(user.id)===Number(match.params.id)) 
     return (
         <div className="card">
             <h2>
