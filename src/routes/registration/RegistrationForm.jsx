@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
 import "./registration.css";
-import {postRequest} from '../../redux/action'
+import { postRequest } from "../../redux/action";
 
 export class RegistrationForm extends Component {
   constructor(props) {
@@ -32,32 +32,44 @@ export class RegistrationForm extends Component {
   };
 
   setDate = (date) => {
-    this.setState({
-      date: date,
-    },()=>{
-      let today = new Date();
-      let birthDate = new Date(date);
-      let age = today.getFullYear() - birthDate.getFullYear();
-      let m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    this.setState(
+      {
+        date: date,
+      },
+      () => {
+        let today = new Date();
+        let birthDate = new Date(date);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
           age--;
+        }
+        this.setState({
+          age: age,
+        });
       }
-      this.setState({
-        age:age
-      })
-    });
+    );
   };
 
   handleSubmit = () => {
-    this.props.postRequest(this.state)
+    const { name, age, location, date, address } = this.state;
+    if (
+      name !== "" &&
+      age !== "" &&
+      location !== "" &&
+      date !== "" &&
+      address !== ""
+    ) {
+      this.props.postRequest(this.state);
+    } 
   };
 
   render() {
-    var date = new Date(); 
+    var date = new Date();
     date.setFullYear(date.getFullYear() - 13);
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className="form">
+        <form className="form" onSubmit={this.handleSubmit}>
           <div className="col1">
             <div className="form-group">
               <label>Name</label>
@@ -145,7 +157,10 @@ export class RegistrationForm extends Component {
                 required
               ></textarea>
             </div>
-            <button type="submit" className="btn">
+            <button
+              type="submit"
+              className="btn"
+            >
               Register
             </button>
           </div>
@@ -155,8 +170,8 @@ export class RegistrationForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  postRequest: (payload) => dispatch(postRequest(payload))
-})
+const mapDispatchToProps = (dispatch) => ({
+  postRequest: (payload) => dispatch(postRequest(payload)),
+});
 
-export default connect(null, mapDispatchToProps)(RegistrationForm)
+export default connect(null, mapDispatchToProps)(RegistrationForm);

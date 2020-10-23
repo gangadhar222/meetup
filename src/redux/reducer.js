@@ -14,6 +14,7 @@ const initState = {
 const reducer = (state = initState, { type, payload }) => {
   switch (type) {
     case GETDATA: {
+     
       return {
         ...state,
         data: payload.data,
@@ -47,7 +48,7 @@ const reducer = (state = initState, { type, payload }) => {
           }
         }
         locations = obj
-        averageTeamSize = Math.ceil(sum / temp.length);
+        averageTeamSize = Math.ceil((sum +temp.length)/ temp.length);
       }
 
       return {
@@ -57,12 +58,20 @@ const reducer = (state = initState, { type, payload }) => {
         studentsCount: studentsCount,
         professionalsCount: professionalsCount,
         averageTeamSize: averageTeamSize,
-        locations:locations
+        locations:locations,
       };
     }
     case POSTDATA: {
+      let msg
+      if(payload.statusText==='OK'){
+        msg = 'Success'
+      }
+      else{
+        msg = 'Failure'
+      }
       return {
         ...state,
+        postMessage:msg
       };
     }
     default:

@@ -13,7 +13,18 @@
   flex-direction: column;
   width: 48%;
 }
-
+.btn{
+  background-color:#F65858;
+  color:white;
+  border: none;
+  padding:1em 56px;
+  border-radius: 0.5em;
+  margin-top: 1em;
+}
+.btn:hover{
+  opacity: 0.7;
+  color: white;
+}
 .customDatePickerWidth, 
 .customDatePickerWidth > div.react-datepicker-wrapper, 
 .customDatePickerWidth > div > div.react-datepicker__input-container
