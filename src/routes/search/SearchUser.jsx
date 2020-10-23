@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {Link} from 'react-router-dom'
 import { getRequest } from "../../redux/action";
 import { connect } from "react-redux";
+import Button from '../../components/button/Button'
 import "./search.css";
 
 export class SearchUser extends Component {
@@ -21,7 +22,6 @@ export class SearchUser extends Component {
 
   handleSearch = ()=>{
     let {input} = this.state
-    console.log(input)
     this.props.getRequest(input);
   }
 
@@ -36,13 +36,11 @@ export class SearchUser extends Component {
         <div className="container">
           <input
             placeholder="search for an user"
-            className="input"
+            className="input" 
             name="input"
             onChange={this.handleChange}
           />
-          <button className="btn margin" onClick={this.handleSearch}>
-            Search
-          </button>
+         <p  className="margin"  onClick={this.handleSearch}><Button label="Search" /></p> 
         </div>
         <div className="row cardComponent">
           {data &&
@@ -52,7 +50,7 @@ export class SearchUser extends Component {
                   <h2>{item.data.name}</h2>
                   <p>{item.data.location}</p>
                   <p>
-                    <button className="button" onClick={this.handleSearch}><Link to={`${match.url}/${item.id}`} className="btnLink">More Info</Link></button>
+                    <Link to={`${match.url}/${item.id}`} className="btnLink" ><Button className="button" label="More Info" /></Link>
                   </p>
                 </div>
               );

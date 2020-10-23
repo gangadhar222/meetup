@@ -3,9 +3,11 @@
   font-family: "Montserrat", sans-serif;
 }
 .userCard {
-  min-width: 800px;
+  max-width: 800px;
   margin: 0 auto;
-  text-align: center;
+  margin-top: 4em;
+  justify-content: center;
+  align-items: center;
   padding: 30px;
   border-radius: 30px;
   background-color: rgb(205, 211, 193);

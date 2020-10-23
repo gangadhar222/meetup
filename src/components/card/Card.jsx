@@ -1,13 +1,15 @@
 import React from "react";
-import "./card.css";
+import styles from './Card.module.css'
 export default function Card(props) {
     let {data} = props
     data = data.data
+    let date = data.date
+    date = date.slice(0,10)
   return (
     <div>
-      <div className="userCard">
-        <h2 className="header">User details</h2>
-        <div className="content">
+      <div className={styles.userCard}>
+        <h2 className={styles.header}>User details</h2>
+        <div className={styles.content}>
           <h2>
             <b>Name:</b> {data.name}
           </h2>
@@ -24,7 +26,7 @@ export default function Card(props) {
             <b>No. of guests:</b> {data.guests}
           </p>
           <p>
-            <b>Date:</b> {data.date}
+            <b>Date of Birth:</b> {date}
           </p>
           <p>
             <b>Address:</b> {data.address}

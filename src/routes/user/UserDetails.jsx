@@ -13,7 +13,7 @@ class UserDetails extends Component {
       (user) => Number(user.id) === Number(match.params.id)
     );
     return (
-      <div className="card">
+      <div>
         <Card data={user} />
       </div>
     );
